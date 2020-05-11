@@ -1,29 +1,4 @@
 // eslint-disable-next-line no-unused-vars
-/*
-const catalogue = [
-  "The Catcher in the Rye by J.D. Salinger (10)",
-  "Dracula by Bram Stoker (0)",
-  "Between the Assassinations by Aravind Adiga (9)",
-  "Wolf Hall by Hilary Mantel (33)",
-  "Bring Up The Bodies by Hilary Mantel (31)",
-  "A Place of Greater Safety by Hilary Mantel (11)",
-  "Giving Up the Ghost by Hilary Mantel (8)",
-  "The Assassination of Margaret Thatcher by Hilary Mantel (43)",
-  "The Yellow Wallpaper by Charlotte Perkins Gilman (12)",
-  "Conversations With Friends by Sally Rooney (1)",
-  "Normal People by Sally Rooney (2)",
-  "Everything I Never Told You by Celeste Ng (6)",
-  "2666 by Robert Bolaño (17)",
-  "By Night In Chile by Robert Bolaño (8)",
-  "A Tale of Two Cities by Charles Dickens (3)",
-  "Oliver Twist by Charles Dickens (7)",
-  "Great Expectations by Charles Dickens (1)",
-  "The Blind Assassin by Margaret Atwood (8)",
-  "Why Be Happy When You Could Be Normal? by Jeanette Winterson (19)",
-  "The Origin of Species by Charles Darwin (50)"
-];
-*/
-
 const catalogue = [
   {title: "The Catcher in the Rye", author: "J.D. Salinger", quantity: 10},
   {title: "Dracula", author: "Bram Stoker", quantity: 0},
@@ -48,69 +23,39 @@ const catalogue = [
 ];
 
 function countBooksByAuthor(author) {
-  // Your code here
   let count = 0;
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].author == author) {
-      count++;
-    }
-  }
+  catalogue.forEach(book => book.author.includes(author) ? count++ : 0);
   return count;
 }
 
 function checkBookByTitle(title) {
-  // Your code here
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].title == title) {
-      return true;
-    }
-  }
-  return false;
+  let result = false;
+  catalogue.forEach(book => book.title == title ? result = true : 0);
+  return result;
 }
 
 function countBooksByFirstLetter(letter) {
-  // Your code here
   let count = 0;
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].title.charAt(0) == letter.toUpperCase()) {
-      count++; 
-    }
-  }
+  catalogue.forEach(book => book.title.charAt(0) == letter.toUpperCase() ? count++ : 0);
   return count;
 }
 
 function getQuantity(title) {
-  // Your code here
   let quantity = 0;
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].title == title) {
-      quantity = catalogue[i].quantity;
-    }
-  }
+  catalogue.forEach(book => book.title == title ? quantity = book.quantity: 0);
   return quantity;
 }
 
 function getBooksByAuthor(author) {
-  // Your code here
-  let books = [];
-  let count = 0;
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].author == author) {
-      books[count] = catalogue[i];
-      count++;
-    }
-  }
-  return books;
+  let result = [];
+  catalogue.forEach(book => book.author == author ? result.push(book) : 0);
+  return result;
 }
 
 function checkQuantity(title, quantity) {
-  // Your code here
-  for (i = 0; i < catalogue.length; i++) {
-    if (catalogue[i].title == title && catalogue[i].quantity > quantity) {
-      return true;
-    }
-  }
-  return false; 
+  let result = false;
+  catalogue.forEach(book => (book.title == title) && (book.quantity > quantity) ? result = true : 0);
+  return result;
 }
 
 module.exports = {

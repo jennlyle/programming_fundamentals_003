@@ -44,6 +44,4 @@ describe("catalogueService", () => {
       expect(catalogueService.checkQuantity("By Night In Chile", 100)).toBe(false);
     })
   })
-
-
 });
